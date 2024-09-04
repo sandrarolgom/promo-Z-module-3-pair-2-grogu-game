@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="page">
+      <p></p>
     <header>
       <h1>¡Cuidado con Grogu!</h1>
     </header>
