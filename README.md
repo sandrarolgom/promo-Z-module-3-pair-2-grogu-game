@@ -31,3 +31,4 @@ Además de estas piezas tendremos un dado de 4 caras donde cada cara representa 
 - Grogu se mueve una casilla 👣
 
 Además habrá una ficha que represente dónde está Grogu. Ganarás el juego si consigues descargar toda la mercancía. Perderás si Grogu llega a la última casilla (el armario).
+## equipo 2
