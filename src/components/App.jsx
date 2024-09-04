@@ -3,7 +3,6 @@ import '../scss/index.scss';
 import '../scss/body.scss';
 
 function App() {
-
   return (
     <div className="page"> 
     <header>
