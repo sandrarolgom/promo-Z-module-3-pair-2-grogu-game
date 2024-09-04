@@ -5,8 +5,7 @@ import '../scss/body.scss';
 function App() {
 
   return (
-    <div className="page">
-      <p></p>
+    <div className="page"> 
     <header>
       <h1>¡Cuidado con Grogu!</h1>
     </header>
