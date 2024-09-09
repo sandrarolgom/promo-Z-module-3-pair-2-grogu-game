@@ -2,16 +2,14 @@
 import '../scss/index.scss';
 import '../scss/body.scss';
 import { useState } from 'react';
+import Header from './Header';
+import Board from './Board';
 
 /* Primer paso:
 --> inicializar el estado de Grogu
 --> incluir la posicón inical de Grogu, de la mercancía 
 --> resultado de Grogu
 */
-
-
-
-
 
 function App() {
   // aquí van las variables de estado
@@ -21,28 +19,31 @@ function App() {
  const [frog, setFrog] = useState(['🐸','🐸','🐸']);
  const [status, setStatus] = useState('En curso');
  
-
- 
+ const rollDice=()=>{
+  let numberRandom = Math.floor(Math.random() * 4) + 1;
+  console.log(numberRandom);
+  /*
+  si numberRandom === 4 , GROGU AVANZA --> actualizar posición
+  si numberRandom === 1 || 2 || 3 , QUITAR UNA MERCANCÍA (se quita 1 elemento del array de mercancía)
+  */
+  if (numberRandom === 4){
+    setBox(box + 1);
+  } else if (numberRandom === 1){
+    setCookie(cookie.slice(1))
+  } else if (numberRandom === 2){
+    setEgg(egg.slice(1))
+  } else if (numberRandom === 3){
+    setFrog(frog.slice(1))
+  }
+}  
   return (
     <div className="page"> 
-    <header>
-      <h1>¡Cuidado con Grogu!</h1>
-    </header>
-    <main className="page">
-      <section className="board">
-        {/* aqui variables de estado SetBox */}
-        <div className="cell" ><div className="grogu">👣</div></div>
-        <div className="cell" ></div> 
-        <div className="cell" ></div>
-        <div className="cell" ></div>
-        <div className="cell" ></div>
-        <div className="cell" ></div>
-        <div className="cell" ></div>
-      </section>
-
+      <Header />
+      <main className="page">
+        <Board />
       <section>
         {/*aqui va el evento onChange para que cambie la posicion de Grogu*/}
-        <button className="dice">Lanzar Dado</button>
+        <button className="dice" onClick={rollDice}>Lanzar Dado</button>
         <div className="game-status">{status}</div>
       </section>
 
