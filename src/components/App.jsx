@@ -16,7 +16,7 @@ import { useState } from 'react';
 function App() {
   // aquí van las variables de estado
  const [box, setBox] = useState (0);
- const [cookie, setCookie] = useState(['🍪','🍪','🍪']);//  dentro del array es la posición inicial
+ const [cookie, setCookie] = useState(['🍪','🍪','🍪']);//  dentro del array esta la posición inicial 
  const [egg, setEgg] = useState(['🥚','🥚','🥚']);
  const [frog, setFrog] = useState(['🐸','🐸','🐸']);
  const [status, setStatus] = useState('En curso');
