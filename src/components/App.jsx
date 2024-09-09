@@ -4,6 +4,7 @@ import '../scss/body.scss';
 import { useState } from 'react';
 import Header from './Header';
 import Board from './Board';
+import Container from './Container';
 
 /* Primer paso:
 --> inicializar el estado de Grogu
@@ -28,13 +29,22 @@ function App() {
   */
   if (numberRandom === 4){
     setBox(box + 1);
+    setStatus("Grogu ha avanzado una casilla")
   } else if (numberRandom === 1){
     setCookie(cookie.slice(1))
+    setStatus("Se ha descargado una galleta")
   } else if (numberRandom === 2){
     setEgg(egg.slice(1))
+    setStatus("Se ha descargado un huevo")
   } else if (numberRandom === 3){
     setFrog(frog.slice(1))
+    setStatus("Se ha descargado una rana")
   }
+
+
+  /* 
+  si Grogu
+  */
 }  
   return (
     <div className="page"> 
@@ -46,25 +56,10 @@ function App() {
         <button className="dice" onClick={rollDice}>Lanzar Dado</button>
         <div className="game-status">{status}</div>
       </section>
-
-      <section className="goods-container">
-        {/*variable de estado cookie*/}
-        <div className="goods-item">🍪</div>
-        <div className="goods-item">🍪</div>
-        <div className="goods-item">🍪</div>
-      </section>
-      <section className="goods-container">
-        {/* variable de estado egg*/}
-        <div className="goods-item">🥚</div>
-        <div className="goods-item">🥚</div>
-        <div className="goods-item">🥚</div>
-      </section>
-      <section className="goods-container">
-        {/* variable de estado frog*/}
-        <div className="goods-item">🐸</div>
-        <div className="goods-item">🐸</div>
-        <div className="goods-item">🐸</div>
-      </section>
+      {/* recogemos los datos del array y los añadimos al componente */}
+      <Container item={cookie}/>
+      <Container item={egg}/>
+      <Container item={frog}/>
       <section>
         <button className="restart-button">Reiniciar Juego</button>
       </section>
