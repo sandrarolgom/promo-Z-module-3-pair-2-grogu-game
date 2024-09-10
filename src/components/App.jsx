@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Header from './Header';
 import Board from './Board';
 import Container from './Container';
+import Dice from './Dice';
 
 /* Primer paso:
 --> inicializar el estado de Grogu
@@ -14,7 +15,7 @@ import Container from './Container';
 
 function App() {
   // aquí van las variables de estado
- const [box, setBox] = useState (0);
+ const [groguPosition, setGroguPosition] = useState (0);
  const [cookie, setCookie] = useState(['🍪','🍪','🍪']);//  dentro del array esta la posición inicial 
  const [egg, setEgg] = useState(['🥚','🥚','🥚']);
  const [frog, setFrog] = useState(['🐸','🐸','🐸']);
@@ -28,7 +29,7 @@ function App() {
   si numberRandom === 1 || 2 || 3 , QUITAR UNA MERCANCÍA (se quita 1 elemento del array de mercancía)
   */
   if (numberRandom === 4){
-    setBox(box + 1);
+    setGroguPosition(groguPosition + 1);
     setStatus("Grogu ha avanzado una casilla")
   } else if (numberRandom === 1){
     setCookie(cookie.slice(1))
@@ -50,10 +51,11 @@ function App() {
     <div className="page"> 
       <Header />
       <main className="page">
-        <Board />
+        <Board container={groguPosition}/>
       <section>
         {/*aqui va el evento onChange para que cambie la posicion de Grogu*/}
-        <button className="dice" onClick={rollDice}>Lanzar Dado</button>
+       <Dice rollDice={rollDice}/>
+
         <div className="game-status">{status}</div>
       </section>
       {/* recogemos los datos del array y los añadimos al componente */}
