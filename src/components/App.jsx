@@ -1,11 +1,12 @@
 // Fichero src/components/App.jsx 
 import '../scss/index.scss';
 import '../scss/body.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './Header';
 import Board from './Board';
 import Container from './Container';
 import Dice from './Dice';
+import Form from './Form';
 
 /* Primer paso:
 --> inicializar el estado de Grogu
@@ -20,7 +21,18 @@ function App() {
  const [egg, setEgg] = useState(['🥚','🥚','🥚']);
  const [frog, setFrog] = useState(['🐸','🐸','🐸']);
  const [status, setStatus] = useState('En curso');
+ const [name, setName] = useState('');
  
+useEffect(() => {
+  if (groguPosition === 6) {
+    setStatus("¡¡Grogu se ha comido el cargamento!! Has perdido");
+  }else {
+    setStatus("Ganaste, Mando completa la misión");
+ }  
+}, [groguPosition]);
+
+
+
  const rollDice=()=>{
   let numberRandom = Math.floor(Math.random() * 4) + 1;
   console.log(numberRandom);
@@ -33,14 +45,17 @@ function App() {
     setStatus("Grogu ha avanzado una casilla")
   } else if (numberRandom === 1){
     setCookie(cookie.slice(1))
-    setStatus("Se ha descargado una galleta")
+    setStatus(`${name} has ayudado a Mando a recoger galleta`)
   } else if (numberRandom === 2){
     setEgg(egg.slice(1))
-    setStatus("Se ha descargado un huevo")
+    setStatus(`${name} has ayudado a Mando a recoger huevo`)
   } else if (numberRandom === 3){
     setFrog(frog.slice(1))
-    setStatus("Se ha descargado una rana")
+    setStatus(`${name} has ayudado a Mando a recoger rana`)
   }
+   
+
+  
 
 
   /* 
@@ -51,6 +66,7 @@ function App() {
     <div className="page"> 
       <Header />
       <main className="page">
+        <Form setName={setName}/>
         <Board container={groguPosition}/>
       <section>
         {/*aqui va el evento onChange para que cambie la posicion de Grogu*/}
