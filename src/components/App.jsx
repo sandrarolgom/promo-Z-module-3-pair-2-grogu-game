@@ -7,6 +7,11 @@ import Board from './Board';
 import Container from './Container';
 import Dice from './Dice';
 import Form from './Form';
+import NavLink from './Footer';
+import { Route, Routes } from 'react-router-dom';
+import Rules from './Rules';
+import Footer from './Footer';
+import Options from './Options';
 
 /* Primer paso:
 --> inicializar el estado de Grogu
@@ -55,34 +60,38 @@ useEffect(() => {
   }
    
 
-  
-
-
-  /* 
-  si Grogu
-  */
 }  
   return (
-    <div className="page"> 
+    <div className="page">
       <Header />
       <main className="page">
-        <Form setName={setName}/>
-        <Board container={groguPosition}/>
-      <section>
-        {/*aqui va el evento onChange para que cambie la posicion de Grogu*/}
-       <Dice rollDice={rollDice}/>
-
-        <div className="game-status">{status}</div>
-      </section>
-      {/* recogemos los datos del array y los añadimos al componente */}
-      <Container item={cookie}/>
-      <Container item={egg}/>
-      <Container item={frog}/>
-      <section>
-        <button className="restart-button">Reiniciar Juego</button>
-      </section>
-    </main>
-  </div>
+        <Routes>
+          <Route path="./rules" element={<Rules />} />
+          <Route path="/" element={
+            <>
+            <Form setName={setName}/>
+            <Board container={groguPosition}/>
+            <section>
+              {/*aqui va el evento onChange para que cambie la posicion de Grogu*/}
+              <Dice rollDice={rollDice}/>
+              <div className="game-status">{status}</div>
+            </section>
+            {/* recogemos los datos del array y los añadimos al componente */}
+            <Container item={cookie}/>
+            <Container item={egg}/>
+            <Container item={frog}/>
+            <section>
+              <button className="restart-button">Reiniciar Juego</button>
+            </section>
+            </>
+          }/>
+          {/* <Route path='/play' element={<NavLink/>}/> */}
+          <Route path='/rules' element={<Rules/>}/>
+          <Route path='/options' element={<Options/>}/>
+        </Routes>       
+      </main>
+      <Footer />
+     </div>
   );
 }
 
