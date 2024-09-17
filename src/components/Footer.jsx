@@ -1,10 +1,11 @@
 import  {NavLink} from 'react-router-dom'
+import '../scss/footer.scss'
 
 function Footer() {
   return (
 <footer className="footer">
   <nav>
-    <ul>
+    <ul className='footer__menu'>
       <li className="footer__menu-item">
         <NavLink to="/play" 
             className={({ isActive }) => isActive ? 'footer__menu-link active' : 'footer__menu-link'} 
